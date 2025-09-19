@@ -1,0 +1,103 @@
+:root {
+  --bg: #0b0c10;
+  --surface: #121318;
+  --text: #e8eaf0;
+  --muted: #a7adbb;
+  --primary: #5b8cff;
+  --primary-ink: #0b1226;
+  --border: #242633;
+  --card: #141622;
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+[data-theme="light"] {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --text: #11131a;
+  --muted: #4f5565;
+  --primary: #2850ff;
+  --primary-ink: #ffffff;
+  --border: #e5e7ef;
+  --card: #ffffff;
+  --shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in oklab, var(--bg) 92%, transparent);
+  backdrop-filter: saturate(180%) blur(10px);
+}
+
+.brand { display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; }
+.brand-mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--primary); color: var(--primary-ink); font-weight: 800; letter-spacing: 0.5px; }
+.brand-text { font-weight: 700; }
+
+.nav { display: none; gap: 18px; }
+.nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+.nav a:hover { color: var(--text); }
+
+.icon-button { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 10px; padding: 8px 10px; cursor: pointer; }
+
+@media (min-width: 820px) { .nav { display: flex; } }
+
+.section { padding: 56px 0; }
+.hero { padding-top: 64px; }
+.hero h1 { font-size: clamp(28px, 4vw, 44px); margin: 0 0 6px; }
+.subtitle { color: var(--muted); margin: 0 0 16px; font-weight: 600; }
+.summary { color: var(--muted); max-width: 80ch; }
+
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.button { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); text-decoration: none; font-weight: 600; }
+.button.primary { background: var(--primary); color: var(--primary-ink); border-color: transparent; }
+.button:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.location { color: var(--muted); margin-left: 6px; }
+
+h2 { font-size: 22px; margin: 0 0 18px; }
+h3 { font-size: 18px; margin: 0; }
+h4 { margin: 0 0 10px; font-size: 15px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px 18px; margin-bottom: 14px; box-shadow: var(--shadow); }
+.card-header { display: flex; flex-direction: column; gap: 6px; margin-bottom: 6px; }
+.card .meta { color: var(--muted); font-size: 14px; }
+.card ul { margin: 8px 0 0 18px; }
+.card li { margin: 6px 0; }
+
+.skills-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.tags li { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); font-weight: 600; font-size: 13px; color: var(--muted); }
+
+@media (min-width: 720px) {
+  .skills-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.contact { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.site-footer { display: flex; gap: 12px; align-items: center; justify-content: center; padding: 32px 16px; border-top: 1px solid var(--border); color: var(--muted); }
+
+/* Accessibility */
+:focus-visible { outline: 3px solid color-mix(in oklab, var(--primary), white 20%); outline-offset: 2px; border-radius: 8px; }
+
+/* Smooth anchor offset for sticky header */
+:target { scroll-margin-top: 90px; }
